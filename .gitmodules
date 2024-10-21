@@ -1,0 +1,12 @@
+[submodule "modules/scnt-puq"]
+	path = modules/scnt-puq
+	url = https://github.com/vrtulka23/scnt-puq.git
+[submodule "modules/scnt-exs"]
+	path = modules/scnt-exs
+	url = https://github.com/vrtulka23/scnt-exs.git
+[submodule "modules/pypuq"]
+	path = modules/pypuq
+	url = https://github.com/vrtulka23/pypuq.git
+[submodule "modules/scnt-gui"]
+	path = modules/scnt-gui
+	url = https://github.com/vrtulka23/scnt-gui.git
