@@ -26,16 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install sphinx
           pip install sphinx-rtd-theme  # or any theme you are using
-          
-      - name: Load environment variables from settings.env
-        run: |
-          source settings.env
-        shell: bash
-
+   
       - name: Build the documentation
-        env:
-          CODE_AUTHOR: ${{ env.CODE_AUTHOR }}
         run: |
+          . settings.env
           sphinx-build ./source ./build/html
 
       - name: Deploy to GitHub Pages
