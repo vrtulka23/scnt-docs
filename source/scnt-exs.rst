@@ -90,6 +90,38 @@ The corresponding example can be compiled using the following command.
    
 More comprehensive examples (e.g. custom Atom and operator classes) are provided in the `example directory <https://github.com/vrtulka23/scnt-exs/tree/main/examples>`_, and additional code tests are implemented in the `tests directory <https://github.com/vrtulka23/scnt-exs/tree/main/tests>`_.
 
+Atoms
+-----
+
+Atoms in EXS are the smallest parts of expressions that hold certain values processed by operators.
+These can be simple scalar numbers an arrays, or more complex entities as physical units, chemical elements, or even some abstract objects e.g. chords.
+The default source code consists of numerical atoms and implements most basic arithmetic operations (addition, subtraction, ...) and mathematical functions.
+This basic set should serve as a sufficient starter kit for a construction of arbitrary expression solver.
+
+Any Atom class should inherit the `AtomBase` class.
+The template parameter of `AtomBase` specifies the data type (number, struct or a class) of the atom value.
+
+.. code-block:: cpp
+
+   class Atom: public AtomBase<double> {
+   public:
+     Atom(Atom &a): AtomBase(a) {};
+     Atom(double v): AtomBase(v) {};  
+     ...
+   }
+
+In general, atom classes used in EXS do not overload any particular operators (e.g. +, +=, < and similar).
+All operations on the atom should be encapsuled in separate public member methods.
+
+.. code-block:: cpp
+
+  void Atom::math_add(Atom *other) {
+      value += other->value;
+  }
+  void Atom::math_subtract(Atom *other) {
+      value -= other->value;
+  }
+   
 Operators
 ---------
 
